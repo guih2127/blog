@@ -35,6 +35,12 @@ nav span {
     font-size: 16px;
 }
 
+.card .card-title {
+    font-size: 35px;
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 30px;
+}
+
 .card .card-subtitle {
     margin-top: 20px;
     margin-bottom: 20px;
