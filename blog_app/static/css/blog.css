@@ -1,0 +1,47 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+}
+
+nav {
+    margin-bottom: 30px;
+    background-color: #2d3436;
+    min-height: 80px;
+}
+
+nav span {
+    color: white;
+    margin: 20px;
+    font-size: 45px;
+    font-family: 'Pacifico', cursive;
+}
+
+.container h1 a {
+    color: black;
+}
+
+.container h2 a {
+    color: black;
+}
+
+.card {
+    padding: 30px;
+    background-color: #ecf0f1;
+    margin: 30px;
+}
+
+.card p {
+    color: #2c1320;
+    font-size: 16px;
+}
+
+.card .card-subtitle {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.footer nav {
+    margin: 0;
+    padding: 0;
+}
