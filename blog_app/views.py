@@ -2,12 +2,23 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
+from django.db.models import Q
 from django.shortcuts import redirect
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 # Create your views here.
 
 def post_list(request):
-	posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
+	all_posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
+	paginator = Paginator(all_posts, 3)
+
+	page = request.GET.get('page')
+	posts = paginator.get_page(page)
+
+	if 'search' in request.GET:
+		search_term = request.GET['search']
+		posts = posts.filter(Q(text__icontains=search_term) | Q(title__icontains=search_term))
+
 	return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):

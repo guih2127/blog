@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Blog</title>
+	<title>Um blog sobre o nada</title>
 	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 
@@ -21,8 +21,8 @@
 	    </ul>
 	    <form class="form-inline my-2 my-lg-0">
 	    	<a class="navbar-brand" href="{% url 'post_list' %}">Blog</a>
-	      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-	      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+	      <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search">
+	      <button class="btn btn-secondary my-2 my-sm-0" type="submit" >Search</button>
 	    </form>
 	  </div>
 	</nav>
@@ -32,7 +32,15 @@
 	    {% endblock %} 		
   </div>
 
-<body>
+	<div class="container" style="text-align:center; margin-bottom:30px;">
+		{% if posts.has_previous %}
+			<button onclick="location.href='?page={{ posts.previous_page_number }}'" type="button" class="btn btn-secondary" title="" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">ANTERIOR</button>
+		{% endif %}
+		{% if posts.has_next %}
+			<button onclick="location.href='?page={{ posts.next_page_number }}'" type="button" class="btn btn-secondary" title="" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover Title">PRÓXIMO</button>
+		{% endif %}
+	</div>
+
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin:0;">
 	  <span style="color:white;">Obrigado por visitar!</span>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,4 +57,5 @@
 	    </div>
 	  </div>
 	</nav>
+</body>
 </html>
