@@ -17,7 +17,7 @@ def post_list(request):
 
 	if 'search' in request.GET:
 		search_term = request.GET['search']
-		posts = posts.filter(Q(text__icontains=search_term) | Q(title__icontains=search_term))
+		posts = all_posts.filter(Q(text__icontains=search_term) | Q(title__icontains=search_term))
 
 	return render(request, 'blog/post_list.html', {'posts': posts})
 
